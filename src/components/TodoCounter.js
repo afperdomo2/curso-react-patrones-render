@@ -1,9 +1,6 @@
 import React from "react";
-import { TodoContext } from "../App/Context/todo";
 
-function TodoCounter() {
-  const { totalTodos, completedTodos } = React.useContext(TodoContext);
-
+function TodoCounter({ totalTodos, completedTodos }) {
   const percentage = Math.round((completedTodos * 100) / totalTodos) || 0;
 
   return (

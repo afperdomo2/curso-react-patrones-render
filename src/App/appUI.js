@@ -1,16 +1,26 @@
 import React from "react";
-import { TodoContext } from "./Context/todo";
-import { TodoCounter } from "../components/TodoCounter";
-import { TodoSearch } from "../components/TodoSearch";
-import { TodoList } from "../components/TodoList";
-import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
-import { TodoForm } from "../components/TodoForm";
 import { Modal } from "../components/Modal";
+import { TodoCounter } from "../components/TodoCounter";
+import { TodoForm } from "../components/TodoForm";
+import { TodoHeader } from "../components/TodoHeader";
+import { TodoItem } from "../components/TodoItem";
+import { TodoList } from "../components/TodoList";
+import { TodoSearch } from "../components/TodoSearch";
+import { TodoContext } from "./Context/todo";
 
 function AppUI() {
-  const { error, loading, searchedTodos, completeToggleTodo, deleteTodo } =
-    React.useContext(TodoContext);
+  const {
+    error,
+    loading,
+    searchedTodos,
+    completeToggleTodo,
+    deleteTodo,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+  } = React.useContext(TodoContext);
 
   return (
     <React.Fragment>
@@ -18,8 +28,17 @@ function AppUI() {
         <div className="card col-lg-7 col-md-12 col-sm-12">
           <div className="card-body">
             <h1 className="card-header text-primary ps-0">TODO React</h1>
-            <TodoCounter />
-            <TodoSearch />
+
+            <TodoHeader>
+              <TodoCounter
+                totalTodos={totalTodos}
+                completedTodos={completedTodos}
+              />
+              <TodoSearch
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+              />
+            </TodoHeader>
 
             <TodoList>
               {error && <p>Hubo un error</p>}
