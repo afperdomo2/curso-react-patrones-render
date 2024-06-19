@@ -9,11 +9,9 @@
  */
 
 import React from "react";
-import { useLocalStorage } from "../../Hooks/localStorage";
+import { useLocalStorage } from "../Hooks/localStorage";
 
-const TodoContext = React.createContext();
-
-function TodoProvider(props) {
+function useTodos() {
   const defaultTodos = [];
   const {
     item: todos,
@@ -58,24 +56,18 @@ function TodoProvider(props) {
     saveTodos(newTodos);
   };
 
-  return (
-    <TodoContext.Provider
-      value={{
-        loading,
-        error,
-        totalTodos,
-        completedTodos,
-        searchValue,
-        searchedTodos,
-        setSearchValue,
-        completeToggleTodo,
-        addTodo,
-        deleteTodo,
-      }}
-    >
-      {props.children}
-    </TodoContext.Provider>
-  );
+  return {
+    loading,
+    error,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    searchedTodos,
+    setSearchValue,
+    completeToggleTodo,
+    addTodo,
+    deleteTodo,
+  };
 }
 
-export { TodoContext, TodoProvider };
+export { useTodos };
