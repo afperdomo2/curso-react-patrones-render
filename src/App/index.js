@@ -7,6 +7,8 @@ import { TodoHeader } from "../components/TodoHeader";
 import { TodoItem } from "../components/TodoItem";
 import { TodoList } from "../components/TodoList";
 import { TodoSearch } from "../components/TodoSearch";
+import { TodosError } from "../components/TodosError";
+import { TodosLoading } from "../components/TodosLoading";
 import { useTodos } from "./useTodos";
 
 function App() {
@@ -40,7 +42,26 @@ function App() {
             />
           </TodoHeader>
 
-          <TodoList>
+          <TodoList
+            error={error}
+            loading={loading}
+            searchedTodos={searchedTodos}
+            onError={() => <TodosError />}
+            onLoading={() => <TodosLoading />}
+            onEmpty={() => <TodosLoading />}
+            render={(todo, index) => (
+              <TodoItem
+                key={todo.text}
+                index={index}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeToggleTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            )}
+          />
+
+          {/* <TodoList>
             {error && <p>Hubo un error</p>}
             {loading && <p>Cargando... por favor espera</p>}
             {!loading && !searchedTodos.length && (
@@ -57,7 +78,7 @@ function App() {
                 onDelete={() => deleteTodo(todo.text)}
               />
             ))}
-          </TodoList>
+          </TodoList> */}
 
           <Modal>
             <TodoForm addTodo={addTodo} />
