@@ -10,6 +10,7 @@ import { TodoSearch } from "../components/TodoSearch";
 import { TodosError } from "../components/TodosError";
 import { TodosLoading } from "../components/TodosLoading";
 import { useTodos } from "./useTodos";
+import { ChangeAlertWithStorageListener } from "../components/ChangeAlert";
 
 function App() {
   const {
@@ -23,6 +24,7 @@ function App() {
     searchValue,
     setSearchValue,
     addTodo,
+    sincronizeTodos,
   } = useTodos();
 
   return (
@@ -66,6 +68,8 @@ function App() {
           </Modal>
 
           <CreateTodoButton loading={loading} />
+
+          <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
         </div>
       </div>
     </div>

@@ -16,9 +16,11 @@ function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
+    sincronizeItem: sincronizeTodos,
     loading,
     error,
   } = useLocalStorage("TODOS_V1", defaultTodos);
+
   const [searchValue, setSearchValue] = React.useState("");
 
   const totalTodos = todos.length;
@@ -67,6 +69,7 @@ function useTodos() {
     completeToggleTodo,
     addTodo,
     deleteTodo,
+    sincronizeTodos,
   };
 }
 
