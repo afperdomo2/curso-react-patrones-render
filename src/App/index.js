@@ -1,4 +1,6 @@
 import React from "react";
+
+import { ChangeAlert } from "../components/ChangeAlert";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import { Modal } from "../components/Modal";
 import { TodoCounter } from "../components/TodoCounter";
@@ -10,7 +12,6 @@ import { TodoSearch } from "../components/TodoSearch";
 import { TodosError } from "../components/TodosError";
 import { TodosLoading } from "../components/TodosLoading";
 import { useTodos } from "./useTodos";
-import { ChangeAlertWithStorageListener } from "../components/ChangeAlert";
 
 function App() {
   const {
@@ -69,7 +70,7 @@ function App() {
 
           <CreateTodoButton loading={loading} />
 
-          <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
+          <ChangeAlert sincronize={sincronizeTodos} />
         </div>
       </div>
     </div>
