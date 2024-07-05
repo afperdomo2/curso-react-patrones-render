@@ -7,9 +7,8 @@
  * reduce la necesidad de pasar props de manera repetitiva a través de
  * múltiples niveles de componentes.
  */
-
 import React from "react";
-import { useLocalStorage } from "../Hooks/localStorage";
+import { useLocalStorage } from "../Hooks/useLocalStorage";
 
 function useTodos() {
   const defaultTodos = [];
