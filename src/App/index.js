@@ -14,19 +14,23 @@ import { TodosLoading } from "../components/TodosLoading";
 import { useTodos } from "./useTodos";
 
 function App() {
+  const { states, stateUpdaters } = useTodos();
   const {
-    error,
     loading,
-    searchedTodos,
-    completeToggleTodo,
-    deleteTodo,
+    error,
     totalTodos,
     completedTodos,
     searchValue,
+    searchedTodos,
+  } = states;
+
+  const {
     setSearchValue,
     addTodo,
+    completeToggleTodo,
+    deleteTodo,
     sincronizeTodos,
-  } = useTodos();
+  } = stateUpdaters;
 
   return (
     <div className="d-flex justify-content-center">

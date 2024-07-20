@@ -37,7 +37,7 @@ function useTodos() {
   const addTodo = (text) => {
     const newTodos = [...todos];
     newTodos.push({
-      text: text,
+      text,
       completed: false,
     });
     saveTodos(newTodos);
@@ -57,19 +57,24 @@ function useTodos() {
     saveTodos(newTodos);
   };
 
-  return {
+  const states = {
     loading,
     error,
     totalTodos,
     completedTodos,
     searchValue,
     searchedTodos,
+  };
+
+  const stateUpdaters = {
     setSearchValue,
-    completeToggleTodo,
     addTodo,
+    completeToggleTodo,
     deleteTodo,
     sincronizeTodos,
   };
+
+  return { states, stateUpdaters };
 }
 
 export { useTodos };
